@@ -8,13 +8,18 @@ public class Calculator {
 
     // getter
     public double getQueue(){
+        if(result.isEmpty())  throw new IllegalStateException("저장된 결과값이 없습니다.연산을 먼저 수행하세요.");
+        return result.peek();
+    }
+
+    // 가장 먼저 저장된 값 제거
+    public double removeQueue(){
         if(result.isEmpty()){
             throw new IllegalStateException("저장된 결과값이 없습니다.연산을 먼저 수행하세요.");
         }
         return result.poll();
     }
 
-    // setter
     public void clearQueue(){
         System.out.println("모든 결과 삭제");
         result.clear();
