@@ -1,27 +1,26 @@
 package calculator2;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class Calculator {
-    private Queue<Double> result = new LinkedList<>();
+    private ArrayList<Double> result = new ArrayList<>();
 
-    // getter
-    public double getQueue(){
-        if(result.isEmpty())  throw new IllegalStateException("저장된 결과값이 없습니다.연산을 먼저 수행하세요.");
-        return result.peek();
+    // 가장 최근 값 가져오기
+    public double getResult(){
+        return result.get(result.size()-1);
     }
 
     // 가장 먼저 저장된 값 제거
-    public double removeQueue(){
-        if(result.isEmpty()){
-            throw new IllegalStateException("저장된 결과값이 없습니다.연산을 먼저 수행하세요.");
-        }
-        return result.poll();
+    public void removeResult(){
+        System.out.println("가장 먼저 저장된 값을 삭제합니다 : " + result.get(0));
+        result.remove(0);
     }
 
-    public void clearQueue(){
-        System.out.println("모든 결과 삭제");
+    // 모든 값을 삭제함
+    public void clearResult(){
+        System.out.println("모든 결과값들을 삭제합니다.");
         result.clear();
     }
 
